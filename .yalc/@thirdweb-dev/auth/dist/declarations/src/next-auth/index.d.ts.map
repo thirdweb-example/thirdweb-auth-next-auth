@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"../../../../src/next-auth","sources":["index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,kBAAkB,EAAE,MAAM,SAAS,CAAC;AAG7C,OAAO,EAAE,cAAc,EAAE,eAAe,EAAE,MAAM,MAAM,CAAC;AACvD,OAAO,EAAE,eAAe,EAAW,MAAM,WAAW,CAAC;AAGrD,wBAAgB,YAAY,CAAC,GAAG,EAAE,kBAAkB;4BAGnB,cAAc,OAAO,eAAe;;;;;;;uBAsCzC,cAAc,OAAO,eAAe;EA+B/D"}
