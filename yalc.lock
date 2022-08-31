@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "@thirdweb-dev/auth": {
-      "signature": "a7866fe97796681e71328392b65bf118",
+      "signature": "eb3fde327b55b17d9a383188d1d9f6cb",
       "file": true,
       "replaced": "^1.0.1"
     }
