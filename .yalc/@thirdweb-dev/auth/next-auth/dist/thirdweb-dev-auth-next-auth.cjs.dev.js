@@ -70,12 +70,12 @@ function ThirdwebNextAuth(cfg) {
                   _context.prev = 1;
                   parsed = JSON.parse(payload);
                   _context.next = 5;
-                  return sdk$1.auth.generateAuthToken("thirdweb.com", parsed);
+                  return sdk$1.auth.generateAuthToken(cfg.domain, parsed);
 
                 case 5:
                   token = _context.sent;
                   _context.next = 8;
-                  return sdk$1.auth.authenticate("thirdweb.com", token);
+                  return sdk$1.auth.authenticate(cfg.domain, token);
 
                 case 8:
                   address = _context.sent;
@@ -125,7 +125,7 @@ function ThirdwebNextAuth(cfg) {
                 token = req.cookies.thirdweb_auth_token || "";
                 _context4.prev = 2;
                 _context4.next = 5;
-                return sdk$1.auth.authenticate("thirdweb.com", token);
+                return sdk$1.auth.authenticate(cfg.domain, token);
 
               case 5:
                 address = _context4.sent;
