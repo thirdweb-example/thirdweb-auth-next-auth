@@ -3,7 +3,7 @@ import { ThirdwebNextAuth } from "@thirdweb-dev/auth/next-auth";
 
 export const { NextAuthHandler, getUser } = ThirdwebNextAuth({
   privateKey: process.env.ADMIN_PRIVATE_KEY || "",
-  domain: "thirdweb.com",
+  domain: "localhost:3000",
   nextOptions: {
     providers: [
       GoogleProvider({

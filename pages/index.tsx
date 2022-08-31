@@ -20,7 +20,7 @@ const Home: NextPage = () => {
   }
 
   const loginWithWallet = async () => {
-    const payload = await sdk?.auth.login("thirdweb.com");
+    const payload = await sdk?.auth.login("localhost:3000");
     await signIn("credentials", { payload: JSON.stringify(payload) });
   }
 
