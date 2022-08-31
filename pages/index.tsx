@@ -20,13 +20,12 @@ const Home: NextPage = () => {
   }
 
   const loginWithWallet = async () => {
-    if (!sdk) {
-      throw new Error("No SDK!")
+    try {
+      const payload = await sdk?.auth.login("localhost:3000");
+      await signIn("credentials", { payload: JSON.stringify(payload) });
+    } catch (err) {
+      throw err;
     }
-
-    const payload = await sdk.auth.login("localhost:3000");
-    const res = await signIn("credentials", { payload: JSON.stringify(payload), redirect: false });
-    router.push(res?.url || "");
   }
 
   return (
