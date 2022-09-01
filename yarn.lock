@@ -940,8 +940,10 @@
     "@types/use-sync-external-store" "^0.0.3"
     use-sync-external-store "^1.2.0"
 
-"@thirdweb-dev/auth@file:.yalc/@thirdweb-dev/auth":
-  version "1.0.1"
+"@thirdweb-dev/auth@1.0.2-nightly-280b786":
+  version "1.0.2-nightly-280b786"
+  resolved "https://registry.yarnpkg.com/@thirdweb-dev/auth/-/auth-1.0.2-nightly-280b786.tgz#e43be7dd2f628dccc3f8f98281f2aa76fa11b464"
+  integrity sha512-VqVhNX4/Ps9DhqYhxxIxgClCXeUlNHuHNjQPCtQhfqpb3Sti3Ml7nyhYAnCxVn6BVBjQ8IDPJL+C9gPIGYWKTg==
   dependencies:
     cookie "^0.5.0"
     cookie-parser "^1.4.6"
