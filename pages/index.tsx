@@ -1,8 +1,13 @@
-import { useAddress, useDisconnect, useMetamask, useSDK } from '@thirdweb-dev/react';
-import type { NextPage } from 'next';
-import { signIn, signOut, useSession } from 'next-auth/react';
-import router from 'next/router';
-import { useState } from 'react';
+import {
+  useAddress,
+  useDisconnect,
+  useMetamask,
+  useSDK,
+} from "@thirdweb-dev/react";
+import type { NextPage } from "next";
+import { signIn, signOut, useSession } from "next-auth/react";
+import router from "next/router";
+import { useState } from "react";
 
 const Home: NextPage = () => {
   const sdk = useSDK();
@@ -17,16 +22,17 @@ const Home: NextPage = () => {
     const res = await fetch("/api/secret");
     const data = await res.json();
     setSecret(data);
-  }
+  };
 
   const loginWithWallet = async () => {
     try {
-      const payload = await sdk?.auth.login("localhost:3000");
+      const domain = "example.com";
+      const payload = await sdk?.auth.login(domain);
       await signIn("credentials", { payload: JSON.stringify(payload) });
     } catch (err) {
       throw err;
     }
-  }
+  };
 
   return (
     <div>
@@ -51,7 +57,8 @@ const Home: NextPage = () => {
         </>
       )}
 
-      <br/><br />
+      <br />
+      <br />
       <button onClick={getSecret}>Get Secret</button>
       <pre>Secret: {JSON.stringify(secret || null)}</pre>
     </div>
