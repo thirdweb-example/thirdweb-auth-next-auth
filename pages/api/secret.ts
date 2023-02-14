@@ -1,23 +1,19 @@
-import { getUser } from "./auth/[...nextauth]";
 import { NextApiRequest, NextApiResponse } from "next";
+import { getSession } from "next-auth/react";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method !== "GET") {
-    return res.status(400).json({
-      message: "Invalid method.",
-    })
-  }
+  const session = await getSession({ req });
 
-  const user = await getUser(req, res);
-  
-  if (!user) {
+  if (!session) {
     res.status(401).json({ message: "Not authorized." });
     return;
   }
 
   return res.status(200).json({
-    message: "This is a secret... don't tell anyone."
+    message: `This is a secret for ${
+      session.user?.address || session.user?.email
+    }`,
   });
-}
+};
 
 export default handler;
