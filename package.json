@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@thirdweb-dev/auth": "^3.0.4-nightly-4d9e5c6",
-    "@thirdweb-dev/react": "^3.9.0-nightly-27d8db2",
+    "@thirdweb-dev/react": "^3.9.0-nightly-8694d5a",
     "@thirdweb-dev/sdk": "^3.9.0-nightly-27d8db2",
     "ethers": "^5.6.8",
     "next": "^12.1.6",
