@@ -1,7 +1,6 @@
 ## Getting Started
 
-
-This example demonstrates how to use thirdweb Auth with NextJS.
+This example demonstrates how to use thirdweb Auth with [Next Auth](https://next-auth.js.org/). In this example, we'll setup a simple app that lets users sign in with their wallet, or with their google account.
 
 To run the project, first clone this repository, and then run one of the following commands to install the dependencies:
 
@@ -11,13 +10,15 @@ npm install
 yarn install
 ```
 
-Next, you need to create a `.env.local` file and add the `ADMIN_PRIVATE_KEY` variable to it with the private key of the wallet you want to use as the admin wallet to generate and verify payloads. Your file should use something like the following:
+Next, you need to create a `.env.local` file and add the following environment variables to it:
 
 ```.env.local
-ADMIN_PRIVATE_KEY=...
+NEXT_PUBLIC_THIRDWEB_AUTH_DOMAIN=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
 ```
 
-Additionally, this project demonstrates the use of OAuth providers along with wallet login through the use of Next Auth. In this project, you'll need to set the `GOOGLE_CLIENT_ID` and `GOOGLE_SECRET_ID` variables which you can learn how to configure for Next Auth [here](https://next-auth.js.org/providers/google).
+The `NEXT_PUBLIC_THIRDWEB_AUTH_DOMAIN` is used to prevent phishing attacks on logins by adding the intended website domain onto every login request. You can obtain a `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` from the [Google Developer Console](https://console.cloud.google.com/). You can learn more about configuring the Google Provider with Next Auth [here](https://next-auth.js.org/providers/google).
 
 ```.env.local
 GOOGLE_CLIENT_ID=...
@@ -32,7 +33,8 @@ npm run dev
 yarn dev
 ```
 
-Now, you can navigate to [http://localhost:3000](http://localhost:3000) to visit the client side page where you can connect a wallet, sign-in with ethereum and view the payload, and use the payload to authenticate with the backend.
+Now, you can navigate to [http://localhost:3000](http://localhost:3000) to visit the client side page where you can login with your wallet, or with Google.
+
 ## Learn More
 
 To learn more about thirdweb and Next Auth, take a look at the following resources:
