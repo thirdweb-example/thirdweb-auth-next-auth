@@ -1,19 +1,12 @@
-import {
-  useAddress,
-  useDisconnect,
-  useMetamask,
-  useSDK,
-} from "@thirdweb-dev/react";
+import { useAddress, useAuth, useMetamask } from "@thirdweb-dev/react";
 import type { NextPage } from "next";
 import { signIn, signOut, useSession } from "next-auth/react";
-import router from "next/router";
 import { useState } from "react";
 
 const Home: NextPage = () => {
-  const sdk = useSDK();
+  const auth = useAuth();
   const address = useAddress();
   const connect = useMetamask();
-  const disconnect = useDisconnect();
   const { data: session } = useSession();
 
   const [secret, setSecret] = useState();
@@ -25,42 +18,30 @@ const Home: NextPage = () => {
   };
 
   const loginWithWallet = async () => {
-    try {
-      const domain = "example.com";
-      const payload = await sdk?.auth.login(domain);
-      await signIn("credentials", { payload: JSON.stringify(payload) });
-    } catch (err) {
-      throw err;
-    }
+    const payload = await auth?.login();
+    await signIn("credentials", {
+      payload: JSON.stringify(payload),
+      redirect: false,
+    });
   };
 
   return (
     <div>
-      {session ? (
-        <>
-          <button onClick={() => signOut()}>Logout</button>
-          <pre>User: {JSON.stringify(session)}</pre>
-        </>
-      ) : (
+      {!!session ? (
+        <button onClick={() => signOut()}>Logout</button>
+      ) : address ? (
         <>
           <button onClick={() => signIn("google")}>Login with Google</button>
-          {address ? (
-            <>
-              <button onClick={loginWithWallet}>Login with Wallet</button>
-              <button onClick={disconnect}>Disconnect Wallet</button>
-              <br />
-              <p>Your address: {address}</p>
-            </>
-          ) : (
-            <button onClick={connect}>Connect Wallet</button>
-          )}
+          <button onClick={() => loginWithWallet()}>Login with Wallet</button>
         </>
+      ) : (
+        <button onClick={() => connect()}>Connect</button>
       )}
-
-      <br />
-      <br />
       <button onClick={getSecret}>Get Secret</button>
-      <pre>Secret: {JSON.stringify(secret || null)}</pre>
+
+      <pre>Connected Wallet: {address}</pre>
+      <pre>User: {JSON.stringify(session?.user || "N/A", undefined, 2)}</pre>
+      <pre>Secret: {JSON.stringify(secret) || "N/A"}</pre>
     </div>
   );
 };
