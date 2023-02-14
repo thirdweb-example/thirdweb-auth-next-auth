@@ -14,16 +14,15 @@ Next, you need to create a `.env.local` file and add the following environment v
 
 ```.env.local
 NEXT_PUBLIC_THIRDWEB_AUTH_DOMAIN=
+NEXTAUTH_URL=
+NEXTAUTH_SECRET=
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 ```
 
 The `NEXT_PUBLIC_THIRDWEB_AUTH_DOMAIN` is used to prevent phishing attacks on logins by adding the intended website domain onto every login request. You can obtain a `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` from the [Google Developer Console](https://console.cloud.google.com/). You can learn more about configuring the Google Provider with Next Auth [here](https://next-auth.js.org/providers/google).
 
-```.env.local
-GOOGLE_CLIENT_ID=...
-GOOGLE_CLIENT_SECRET=...
-```
+The `NEXTAUTH_URL` is used to setup your Next Auth API endpoints - you can learn more about how to configure it [here](https://next-auth.js.org/configuration/options#nextauth_url). The `NEXTAUTH_SECRET` is used to sign the session cookies - you can learn more about how to configure it [here](https://next-auth.js.org/configuration/options#nextauth_secret).
 
 Finally, you can run the project with one of the following commands:
 
