@@ -2,6 +2,7 @@ import { useAddress, useAuth, useMetamask } from "@thirdweb-dev/react";
 import type { NextPage } from "next";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useState } from "react";
+import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   const auth = useAuth();
@@ -26,22 +27,78 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div>
-      {!!session ? (
-        <button onClick={() => signOut()}>Logout</button>
-      ) : address ? (
-        <>
-          <button onClick={() => signIn("google")}>Login with Google</button>
-          <button onClick={() => loginWithWallet()}>Login with Wallet</button>
-        </>
-      ) : (
-        <button onClick={() => connect()}>Connect</button>
-      )}
-      <button onClick={getSecret}>Get Secret</button>
+    <div className={styles.container}>
+      <div>
+        <div className={styles.iconContainer}>
+          <img
+            className={styles.icon}
+            src={"/thirdweb.png"}
+            alt="thirdweb icon"
+          />
+          <img
+            className={styles.icon}
+            src={"/next-auth.png"}
+            alt="next auth icon"
+          />
+        </div>
 
-      <pre>Connected Wallet: {address}</pre>
-      <pre>User: {JSON.stringify(session?.user || "N/A", undefined, 2)}</pre>
-      <pre>Secret: {JSON.stringify(secret) || "N/A"}</pre>
+        <h1 className={styles.h1}>thirdweb + Next Auth</h1>
+
+        <p className={styles.explain}>
+          In this flow, you can login to a Next Auth backend using either Google
+          OAuth, or login with wallet via thirdweb Auth. They are both
+          compatible with the same system.
+        </p>
+
+        <div className={styles.stack}>
+          {!!session ? (
+            <button onClick={() => signOut()} className={styles.mainButton}>
+              Logout
+            </button>
+          ) : address ? (
+            <>
+              <button
+                onClick={() => signIn("google")}
+                className={styles.mainButton}
+              >
+                Login with Google
+              </button>
+              <button
+                onClick={() => loginWithWallet()}
+                className={styles.mainButton}
+              >
+                Login with Wallet
+              </button>
+            </>
+          ) : (
+            <button onClick={() => connect()} className={styles.mainButton}>
+              Connect Wallet
+            </button>
+          )}
+          <button onClick={getSecret} className={styles.mainButton}>
+            Get Secret
+          </button>
+        </div>
+
+        <hr className={styles.divider} />
+
+        <h2>Information</h2>
+
+        <p>
+          <b>Conencted Wallet: </b>
+          {address}
+        </p>
+
+        <p>
+          <b>User: </b>
+          {JSON.stringify(session?.user || "N/A")}
+        </p>
+
+        <p>
+          <b>Secret: </b>
+          {JSON.stringify(secret || "N/A")}
+        </p>
+      </div>
     </div>
   );
 };
