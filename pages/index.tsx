@@ -1,6 +1,7 @@
 import { useAddress, useAuth, useMetamask } from "@thirdweb-dev/react";
 import type { NextPage } from "next";
 import { signIn, signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
 
@@ -30,15 +31,19 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       <div>
         <div className={styles.iconContainer}>
-          <img
+          <Image
             className={styles.icon}
-            src={"/thirdweb.png"}
+            src="/thirdweb.png"
             alt="thirdweb icon"
+            width={100}
+            height={100}
           />
-          <img
+          <Image
             className={styles.icon}
-            src={"/next-auth.png"}
+            src="/next-auth.png"
             alt="next auth icon"
+            width={100}
+            height={100}
           />
         </div>
 
