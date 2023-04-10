@@ -4,8 +4,8 @@ import { SessionProvider } from "next-auth/react";
 import { Session } from "next-auth";
 import "../styles/globals.css";
 
-// This is the chainId your dApp will work on.
-const activeChainId = ChainId.Mainnet;
+// This is the chain your dApp will work on.
+const activeChain = "mumbai";
 
 function MyApp({
   Component,
@@ -14,7 +14,7 @@ function MyApp({
   return (
     <SessionProvider session={session}>
       <ThirdwebProvider
-        desiredChainId={activeChainId}
+        activeChain={activeChain}
         authConfig={{
           domain: process.env.NEXT_PUBLIC_THIRDWEB_AUTH_DOMAIN || "",
         }}
