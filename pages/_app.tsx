@@ -1,5 +1,5 @@
 import type { AppProps } from "next/app";
-import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
+import { ThirdwebProvider } from "@thirdweb-dev/react";
 import { SessionProvider } from "next-auth/react";
 import { Session } from "next-auth";
 import "../styles/globals.css";
