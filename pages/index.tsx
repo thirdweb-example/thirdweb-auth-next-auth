@@ -13,6 +13,7 @@ const Home: NextPage = () => {
 
   const [secret, setSecret] = useState();
 
+  // Hit our example secret endpoint to show the flow for using an authenticated endpoint
   const getSecret = async () => {
     const res = await fetch("/api/secret");
     const data = await res.json();
