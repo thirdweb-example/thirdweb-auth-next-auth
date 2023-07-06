@@ -20,7 +20,9 @@ const Home: NextPage = () => {
   };
 
   const loginWithWallet = async () => {
+    // Get the sign-in with ethereum login payload
     const payload = await auth?.login();
+    // Use the payload to sign-in via our wallet based credentials provider
     await signIn("credentials", {
       payload: JSON.stringify(payload),
       redirect: false,
